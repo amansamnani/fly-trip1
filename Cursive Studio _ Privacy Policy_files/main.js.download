@@ -1,0 +1,179 @@
+// Navigation Start
+
+        const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+const links = document.querySelectorAll(".nav-links li");
+
+hamburger.addEventListener('click', ()=>{
+   //Animate Links
+    navLinks.classList.toggle("open");
+    links.forEach(link => {
+        link.classList.toggle("fade");
+    });
+
+    //Hamburger Animation
+    hamburger.classList.toggle("toggle");
+});
+
+// Navigation End -------
+console.clear();
+
+Splitting();
+
+$(document).ready(function () {
+
+  var timeout = 1000
+  $('html').addClass('is-animating');
+
+  $(".cursive-loader").animate({
+    width: "100%"
+  }, timeout);
+
+  setTimeout(function () {
+    $('.cursive-preloader').removeClass('cursive-active');
+  }, timeout);
+
+  setTimeout(function () {
+    $('html').removeClass('is-animating');
+  }, timeout);
+
+});
+
+
+var bleep = new Audio();
+bleep.src = "./assets/audio/button-hover.wav";
+
+
+$(document).ready(function(){
+
+	//material contact form
+	$('.contact-form').find('.form-control').each(function() {
+	  var targetItem = $(this).parent();
+	  if ($(this).val()) {
+		$(targetItem).find('label').css({
+		  'top': '6px',
+		'fontSize': '12px'
+		});
+	  }
+	})
+	$('.contact-form').find('.form-control').focus(function() {
+	  $(this).parent('.input-block').addClass('focus');
+	  $(this).parent().find('label').animate({
+		'top': '6px',
+		'fontSize': '12px'
+	  }, 300);
+	})
+	$('.contact-form').find('.form-control').blur(function() {
+	  if ($(this).val().length == 0) {
+		$(this).parent('.input-block').removeClass('focus');
+		$(this).parent().find('label').animate({
+		  'top': '25px',
+		  'fontSize': '18px'
+		}, 300);
+	  }
+	})
+	
+});
+
+
+
+
+// GSAP pinning start
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".tab-container").forEach((panel, i) => {
+  ScrollTrigger.create({
+    trigger: panel,
+    start: "top top", 
+    end:"bottom top",
+    pin: true, 
+    pinSpacing: false,
+    snap:1,
+    duration:0.1
+  });
+});
+
+
+
+gsap.from('#scroll-down', .6, {
+    y:15,
+    repeat:-1, 
+    yoyo:true, 
+    ease:"spring",
+});
+
+gsap.from('#service-landing', .9, {
+  y:20,
+  repeat:-1, 
+  yoyo:true, 
+  ease:"power0"
+});
+
+gsap.from('#astronaut-image', 12, {
+    rotation:90,
+    repeat:-1, 
+    yoyo:true, 
+    ease:"power0",
+});
+
+gsap.from(".cursive-head .char", {
+    scrollTrigger: {
+        trigger: ".cursive-head .char",
+        start: "top bottom",
+        toggleActions: "restart none none none"
+    },
+    duration: 1,
+    scale: 0.5, 
+    opacity: 0, 
+    delay: 0.1, 
+    stagger: 0.1,
+    ease: "elastic", 
+    force3D: true
+  });
+  
+
+  gsap.from(".main-head .char", {
+    scrollTrigger: {
+        trigger: ".main-head .char",
+        start: "top bottom",
+        toggleActions: "restart none none none"
+    },
+    duration: 1,
+    scale: 0.5, 
+    opacity: 0, 
+    delay: 0.1, 
+    stagger: 0.1,
+    ease: "elastic", 
+    force3D: true,
+  });
+
+  gsap.from(".contact-head .char", {
+    scrollTrigger: {
+        trigger: ".contact-head .char",
+        start: "top bottom",
+        toggleActions: "restart none none none"
+    },
+    duration: 0.5,
+    scale: 0.5, 
+    opacity: 0, 
+    delay: 0.05, 
+    stagger: 0.05,
+    ease: "elastic", 
+    force3D: true,
+  });
+
+  gsap.from(".stretch-it", .4, {
+    opacity: 0.1, 
+    delay: 2.0, 
+    ease: "power0", 
+    stagger: 0.4
+  });
+
+  gsap.timeline({repeat:-1})
+      .fromTo(".m1", {opacity:0}, {opacity:1, duration:2})
+      .to(".m1", {opacity:0, delay:3})
+      .fromTo(".m2", {opacity:0}, {opacity:1, duration:2})
+      .to(".m2", {opacity:0, delay:3})
+      .fromTo(".m3", {opacity:0}, {opacity:1, duration:2})
+      .to(".m3", {opacity:0, delay:3})
